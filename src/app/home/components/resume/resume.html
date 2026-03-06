@@ -1,0 +1,85 @@
+<section class="resume" id="resume">
+  <div class="container d-flex flex-column justify-content-between h-100">
+    <div class="section-title flex-grow-1">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="text-center">
+            <h2 data-aos="heading-show" class="text_background">
+              Mon Parcours
+              <span class="heading_background">Résumé</span>
+            </h2>
+            <p class="m-0">Formation et compétences</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-content flex-grow-1">
+      <div class="row mt-4">
+        <!-- Formation -->
+        <div class="col-lg-6">
+          <h3 class="mb-4">Formation</h3>
+          <ul class="list-inline resume-list">
+            @for (f of formations(); track f.id) {
+              <li>
+                <h4 class="mb-2">{{ f.titre }}</h4>
+                <span class="time">{{ f.organisation }}</span>
+                <span class="time ml-2">{{ f.periode }}</span>
+                @if (f.description) {
+                  <p class="my-2">{{ f.description }}</p>
+                }
+              </li>
+            }
+            @if (!formations().length) {
+              <li class="text-muted">Chargement...</li>
+            }
+          </ul>
+        </div>
+
+        <!-- Expériences pro -->
+        <div class="col-lg-6">
+          <h3 class="mb-4">Expériences</h3>
+          <ul class="list-inline resume-list">
+            @for (e of autresExperiences(); track e.id) {
+              <li>
+                <h4 class="mb-2">{{ e.titre }}</h4>
+                <span class="time">{{ e.organisation }}</span>
+                <span class="time ml-2">{{ e.periode }}</span>
+                @if (e.description) {
+                  <p class="my-2">{{ e.description }}</p>
+                }
+              </li>
+            }
+            @if (!autresExperiences().length) {
+              <li class="text-muted">Aucune expérience professionnelle renseignée.</li>
+            }
+          </ul>
+        </div>
+      </div>
+
+      <!-- Compétences -->
+      <div class="row mt-5">
+        @for (skill of skills; track skill.nom) {
+          <div class="col-lg-6">
+            <div class="skill d-flex flex-row pr-4 pr-sm-3 px-3 mb-4">
+              <div class="skill-progress flex-grow-1">
+                <div class="progresss-info d-flex flex-row justify-content-between mt-2 mb-1">
+                  <span>{{ skill.nom }}</span>
+                  <span class="text-right progress-percent">{{ skill.niveau }}%</span>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar"
+                       [attr.data-percent]="skill.niveau"
+                       [attr.aria-valuenow]="skill.niveau"
+                       aria-valuemin="0" aria-valuemax="100"
+                       [style.width.%]="skill.niveau">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

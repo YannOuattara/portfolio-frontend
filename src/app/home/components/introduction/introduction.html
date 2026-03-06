@@ -1,0 +1,50 @@
+<section class="home d-flex" id="home">
+
+  <!--Start Background Image-->
+  <div class="mono-background">
+    <div class="mono-background-inner" data-aos-duration="1200" data-aos-delay="450" data-aos="fade-left">
+      <img src="assets/img/intro-bg.png" width="1405" height="937" class="img-align-center" alt="">
+    </div>
+  </div>
+  <!--End Background Image-->
+
+  <div class="container introduction text-left">
+    <p class="welcome_text mb-4" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="150">
+      {{ profil?.titre || 'Développeur Full Stack' }}
+    </p>
+    <div id="parallax-scene" class="mb-4" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300">
+      <div class="heading-zone">
+        <h1 class="animate-fade-up">{{ profil?.nom_complet || 'Ouattara Yann Cédric Emmanuel' }}</h1>
+      </div>
+    </div>
+    <div data-aos="fade-up" data-aos-duration="1200" data-aos-delay="450" class="d-flex gap-3 flex-wrap">
+      <a href="#about" class="btn btn-primary btn-small">En savoir plus</a>
+      @if (profil?.lien_cv) {
+        <a [href]="apiUrl + profil!.lien_cv" target="_blank" class="btn btn-outline-primary btn-small">
+          Télécharger CV
+        </a>
+      }
+    </div>
+    @if (profil?.social_networks?.length) {
+      <div class="mt-4" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="600">
+        @for (reseau of profil!.social_networks; track reseau.id) {
+          <a [href]="reseau.url" target="_blank" rel="noopener noreferrer" class="mr-3" style="font-size:1.5rem;color:inherit;">
+            @if (reseau.icone) {
+              <i [class]="reseau.icone"></i>
+            } @else {
+              <span>{{ reseau.plateforme }}</span>
+            }
+          </a>
+        }
+      </div>
+    }
+  </div>
+  <div class="scroll-down">
+    <a href="#about" class="scroll-down-link text-center hoveroff">
+      <div class="scroll-title">Scroll Down</div>
+      <div class="scroll-mouse">
+        <div class="whell"></div>
+      </div>
+    </a>
+  </div>
+</section>

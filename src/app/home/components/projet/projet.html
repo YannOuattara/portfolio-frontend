@@ -1,0 +1,76 @@
+<section class="portfolio" id="portfolio">
+  <div class="container d-flex flex-column justify-content-between h-100">
+
+    <div class="section-title flex-grow-1">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="text-center">
+            <h2 data-aos="heading-show" class="text_background">
+              Mes Projets
+              <span class="heading_background">Portfolio</span>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filtres -->
+    <div class="text-center mb-4">
+      @for (filtre of filtres; track filtre.value) {
+        <button class="btn mr-2 mb-2"
+                [class.btn-primary]="filtreActif() === filtre.value"
+                [class.btn-outline-primary]="filtreActif() !== filtre.value"
+                (click)="filtrer(filtre)">
+          {{ filtre.label }}
+        </button>
+      }
+    </div>
+
+    <!-- Grille de projets -->
+    <div class="row">
+      @for (projet of projets(); track projet.id) {
+        <div class="col-lg-6 col-md-6 mt-4">
+          <div class="card h-100">
+            @if (projet.image) {
+              <img [src]="profilImg + projet.image" class="card-img-top" [alt]="projet.titre" style="height:200px;object-fit:cover;">
+            }
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-2">
+                <i [class]="projet.icone_categorie + ' mr-2'"></i>
+                <small class="text-muted">{{ projet.categorie }}</small>
+                @if (projet.en_vedette) {
+                  <span class="badge badge-warning ml-auto">En vedette</span>
+                }
+              </div>
+              <h5 class="card-title">{{ projet.titre }}</h5>
+              <p class="card-text">{{ projet.description_courte }}</p>
+              @if (projet.technologies.length) {
+                <div class="mb-2">
+                  @for (tech of projet.technologies; track tech) {
+                    <span class="badge badge-secondary mr-1">{{ tech }}</span>
+                  }
+                </div>
+              }
+            </div>
+            <div class="card-footer d-flex gap-2">
+              @if (projet.url_github) {
+                <a [href]="projet.url_github" target="_blank" class="btn btn-sm btn-outline-dark">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+              }
+              @if (projet.url_live) {
+                <a [href]="projet.url_live" target="_blank" class="btn btn-sm btn-outline-primary">
+                  <i class="fas fa-external-link-alt"></i> Live
+                </a>
+              }
+            </div>
+          </div>
+        </div>
+      }
+      @if (!projets().length) {
+        <div class="col-12 text-center text-muted mt-4">Chargement des projets...</div>
+      }
+    </div>
+
+  </div>
+</section>

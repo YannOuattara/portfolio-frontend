@@ -1,0 +1,830 @@
+/* ============================================================
+   PORTFOLIO — Thème & Animations Premium
+   Palette : Bordeaux · Vert Forêt · Or/Beige
+   ============================================================ */
+
+/* ══════════════════════════════════════════════════════════════
+   1. CSS CUSTOM PROPERTIES
+   ══════════════════════════════════════════════════════════════ */
+
+:root,
+[data-theme="dark"] {
+  --bg:              #0d0d0f;
+  --bg-secondary:    #131318;
+  --bg-card:         #1a1a24;
+  --bg-card-hover:   #20202e;
+  --border:          #2a2a3a;
+  --border-light:    #1e1e2e;
+
+  --accent:          #8B1535;
+  --accent-hover:    #a61f42;
+  --accent-glow:     rgba(139, 21, 53, 0.5);
+  --accent-subtle:   rgba(139, 21, 53, 0.12);
+
+  --green:           #2D6A4F;
+  --green-glow:      rgba(45, 106, 79, 0.4);
+
+  --gold:            #C9A84C;
+  --gold-hover:      #dfc060;
+  --gold-glow:       rgba(201, 168, 76, 0.45);
+  --gold-subtle:     rgba(201, 168, 76, 0.1);
+
+  --text:            #f0f0f0;
+  --text-secondary:  #9a9a9a;
+  --text-muted:      #5a5a6a;
+
+  --shadow-sm:       0 2px 12px rgba(0, 0, 0, 0.4);
+  --shadow-md:       0 8px 30px rgba(0, 0, 0, 0.55);
+  --shadow-lift:     0 20px 60px rgba(0, 0, 0, 0.75);
+  --shadow-accent:   0 8px 30px rgba(139, 21, 53, 0.3);
+
+  --primary-color:   var(--accent);
+}
+
+[data-theme="light"] {
+  --bg:              #faf8f5;
+  --bg-secondary:    #f2efe9;
+  --bg-card:         #ffffff;
+  --bg-card-hover:   #fdf9f4;
+  --border:          #e0d8ce;
+  --border-light:    #ece8e1;
+
+  --accent:          #8B1535;
+  --accent-hover:    #6d1028;
+  --accent-glow:     rgba(139, 21, 53, 0.2);
+  --accent-subtle:   rgba(139, 21, 53, 0.08);
+
+  --green:           #2D6A4F;
+  --green-glow:      rgba(45, 106, 79, 0.2);
+
+  --gold:            #9a7518;
+  --gold-hover:      #b88e20;
+  --gold-glow:       rgba(154, 117, 24, 0.25);
+  --gold-subtle:     rgba(154, 117, 24, 0.08);
+
+  --text:            #1a1a1a;
+  --text-secondary:  #4a4a4a;
+  --text-muted:      #888888;
+
+  --shadow-sm:       0 2px 12px rgba(0, 0, 0, 0.07);
+  --shadow-md:       0 6px 24px rgba(0, 0, 0, 0.1);
+  --shadow-lift:     0 16px 48px rgba(0, 0, 0, 0.15);
+  --shadow-accent:   0 6px 24px rgba(139, 21, 53, 0.18);
+
+  --primary-color:   var(--accent);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   2. TRANSITION DE THÈME
+   ══════════════════════════════════════════════════════════════ */
+
+/* Transition de thème ciblée — ne touche pas les images ni les éléments AOS */
+body,
+header,
+section,
+h1, h2, h3, h4, h5, h6,
+p, a, span, li,
+.btn,
+.form-control,
+.service-single,
+.testimonial-box,
+.progress-bar,
+.skill,
+footer {
+  transition:
+    background-color 0.5s ease,
+    border-color     0.5s ease,
+    color            0.4s ease,
+    box-shadow       0.4s ease;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   3. OVERRIDES DARK THEME — Éléments de base
+   ══════════════════════════════════════════════════════════════ */
+
+body {
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text) !important;
+}
+
+p {
+  color: var(--text-secondary) !important;
+}
+
+a {
+  color: var(--text) !important;
+}
+
+a:hover {
+  color: var(--accent) !important;
+  text-decoration: none !important;
+}
+
+span.welcome_text {
+  color: var(--text) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   4. OVERRIDES LIGHT MODE — Corrections de visibilité
+   ══════════════════════════════════════════════════════════════ */
+
+[data-theme="light"] {
+  /* Header */
+  header .header-ins {
+    background-color: rgba(250, 248, 245, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  header ul li a {
+    color: var(--text) !important;
+  }
+
+  .site-logo a {
+    color: var(--text) !important;
+  }
+
+  /* Navigation links */
+  .nav-link {
+    color: var(--text) !important;
+  }
+
+  /* Hamburger */
+  .button-toggler span {
+    background-color: var(--text) !important;
+  }
+
+  /* Hero section */
+  section.home h1 {
+    color: var(--text) !important;
+    border-color: var(--text) !important;
+  }
+
+  span.welcome_text {
+    color: var(--text) !important;
+  }
+
+  .scroll-down .scroll-title {
+    color: var(--text) !important;
+  }
+
+  .scroll-down .scroll-mouse {
+    border-color: var(--text) !important;
+  }
+
+  .scroll-down .scroll-mouse .whell {
+    background-color: var(--text) !important;
+  }
+
+  /* About section */
+  .about-info span {
+    color: var(--text-secondary) !important;
+  }
+
+  .about-info span.desc {
+    color: var(--text) !important;
+    font-weight: 600;
+  }
+
+  /* Sections alternées */
+  section:not(.backgound-section):not(.home):nth-child(odd) {
+    background-color: var(--bg-secondary) !important;
+  }
+
+  section:not(.backgound-section):not(.home):nth-child(even) {
+    background-color: var(--bg) !important;
+  }
+
+  /* Cards */
+  .service-single,
+  .testimonial-box,
+  section.project .box {
+    background-color: var(--bg-card) !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
+  }
+
+  .service-single h3,
+  .testimonial-box h3 {
+    color: var(--text) !important;
+  }
+
+  .service-single p,
+  .testimonial-box p {
+    color: var(--text-secondary) !important;
+  }
+
+  /* Resume */
+  .resume-list span.time {
+    color: var(--text-secondary) !important;
+  }
+
+  .resume-list h4 {
+    color: var(--accent) !important;
+  }
+
+  .resume-list li::before {
+    border-color: var(--accent) !important;
+  }
+
+  .resume-list li::after {
+    background-color: var(--border) !important;
+  }
+
+  /* Skills */
+  .skill .progresss-info span {
+    color: var(--text) !important;
+  }
+
+  .skill .progress {
+    background-color: var(--border) !important;
+  }
+
+  /* Section title subtext */
+  .section-title p {
+    color: var(--text-secondary) !important;
+  }
+
+  /* Contact */
+  .contact-details h5,
+  .contact-details p {
+    color: var(--text) !important;
+  }
+
+  .form-control {
+    background-color: var(--bg-card) !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
+  }
+
+  .form-control::placeholder {
+    color: var(--text-muted) !important;
+  }
+
+  /* Footer */
+  footer.horizontal-footer {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-secondary) !important;
+  }
+
+  /* Heading watermark */
+  h2.text_background span.heading_background {
+    -webkit-text-stroke: 1px rgba(26, 26, 26, 0.07) !important;
+  }
+
+  /* Return to top */
+  .toTop {
+    background-color: var(--bg-card) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border);
+  }
+
+  /* Social icons */
+  .social-icons li a {
+    border-color: var(--border) !important;
+    color: var(--text) !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   5. OVERRIDES GLOBAUX (dark + light)
+   ══════════════════════════════════════════════════════════════ */
+
+header .header-ins {
+  background-color: var(--bg) !important;
+}
+
+/* Image intro — suppression du fond coloré */
+section.home {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.mono-background {
+  background-color: transparent !important;
+}
+
+.mono-background-inner {
+  background-color: transparent !important;
+}
+
+.service-single,
+.testimonial-box,
+section.project .box {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border) !important;
+}
+
+.progress-bar {
+  background-color: var(--accent) !important;
+}
+
+.skill .progress {
+  background-color: var(--border) !important;
+}
+
+section:not(.backgound-section):not(.home):nth-child(odd) {
+  background-color: var(--bg-secondary) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   6. BOUTON TOGGLE THÈME
+   ══════════════════════════════════════════════════════════════ */
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--accent-subtle);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-left: 14px;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  transition:
+    border-color 0.3s ease,
+    color        0.3s ease,
+    transform    0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background   0.3s ease !important;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease !important;
+  }
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: rotate(30deg) scale(1.15);
+
+    &::before { opacity: 1; }
+  }
+
+  i {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   7. ANIMATIONS — KEYFRAMES
+   ══════════════════════════════════════════════════════════════ */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(50px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+@keyframes skillFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes gradientBorder {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 8px var(--accent-glow); }
+  50%       { box-shadow: 0 0 24px var(--accent-glow), 0 0 48px var(--gold-glow); }
+}
+
+@keyframes btnPulse {
+  0%   { box-shadow: 0 0 0 0   var(--accent-glow); }
+  50%  { box-shadow: 0 0 0 12px rgba(139, 21, 53, 0); }
+  100% { box-shadow: 0 0 0 0   rgba(139, 21, 53, 0); }
+}
+
+@keyframes barFill {
+  from { width: 0 !important; }
+}
+
+@keyframes progressShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   8. SCROLL REVEAL (Intersection Observer)
+   ══════════════════════════════════════════════════════════════ */
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity   0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.scroll-reveal.reveal-left {
+  transform: translateX(-40px);
+}
+
+.scroll-reveal.reveal-right {
+  transform: translateX(40px);
+}
+
+.scroll-reveal.reveal-scale {
+  transform: scale(0.88);
+  transition:
+    opacity   0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Délais en cascade pour les éléments enfants */
+.scroll-reveal:nth-child(1) { transition-delay: 0s   !important; }
+.scroll-reveal:nth-child(2) { transition-delay: 0.1s !important; }
+.scroll-reveal:nth-child(3) { transition-delay: 0.2s !important; }
+.scroll-reveal:nth-child(4) { transition-delay: 0.3s !important; }
+.scroll-reveal:nth-child(5) { transition-delay: 0.4s !important; }
+.scroll-reveal:nth-child(6) { transition-delay: 0.5s !important; }
+
+/* ══════════════════════════════════════════════════════════════
+   9. ANIMATIONS D'ENTRÉE HERO
+   ══════════════════════════════════════════════════════════════ */
+
+.animate-fade-up {
+  animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-up-d1 { animation: fadeInUp 0.9s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-fade-up-d2 { animation: fadeInUp 0.9s 0.3s  cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-fade-up-d3 { animation: fadeInUp 0.9s 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* Titre hero */
+section.home h1 {
+  color: var(--text) !important;
+  animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Texte d'accueil */
+p.welcome_text {
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+    color: var(--accent);
+    margin-left: 2px;
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   10. MENU — SOULIGNEMENT DU CENTRE
+   ══════════════════════════════════════════════════════════════ */
+
+header ul li a {
+  position: relative;
+  padding-bottom: 4px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    right: 50%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    border-radius: 2px;
+    transition: left 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                right 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  &:hover::after,
+  &.active::after {
+    left: 10%;
+    right: 10%;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   11. CARTES PROJETS — LIFT 3D + BORDER ANIMÉ
+   ══════════════════════════════════════════════════════════════ */
+
+.portfolio-item {
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease !important;
+
+  &:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-lift), 0 0 0 1px var(--accent-subtle) !important;
+  }
+}
+
+/* Cartes services & autres */
+.service-single {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform  0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease !important;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      var(--accent-subtle) 0%,
+      transparent 50%,
+      var(--gold-subtle) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease !important;
+  }
+
+  &:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: var(--shadow-lift) !important;
+
+    &::before { opacity: 1; }
+  }
+}
+
+section.project .box {
+  transition:
+    transform  0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease !important;
+
+  &:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: var(--shadow-lift) !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   12. COMPÉTENCES (RESUME) — FLOAT + GLOW PREMIUM
+   ══════════════════════════════════════════════════════════════ */
+
+.skill {
+  border-radius: 4px;
+  padding: 4px 0;
+  transition: none !important;
+
+  .progress-bar {
+    background: linear-gradient(
+      90deg,
+      var(--accent) 0%,
+      #c42050       40%,
+      var(--gold)   70%,
+      var(--accent) 100%
+    ) !important;
+    background-size: 200% auto !important;
+    animation: barFill 1.5s ease-out forwards;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 100%
+      );
+      background-size: 200% auto;
+      animation: progressShimmer 2s linear 1.5s infinite;
+    }
+  }
+
+  &:hover {
+    .progresss-info span {
+      color: var(--gold) !important;
+      text-shadow: 0 0 12px var(--gold-glow);
+      transition: color 0.3s ease, text-shadow 0.3s ease !important;
+    }
+
+    .skill-progress {
+      animation: skillFloat 2s ease-in-out infinite;
+    }
+
+    .progress {
+      box-shadow: 0 0 16px var(--accent-glow);
+    }
+
+    .progress-bar {
+      animation:
+        barFill         0s    ease-out   forwards,
+        progressShimmer 1.5s  linear     infinite,
+        glowPulse       2s    ease-in-out infinite;
+    }
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   13. BOUTONS CTA — PULSATION + GRADIENT
+   ══════════════════════════════════════════════════════════════ */
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent) 0%, #c42050 100%) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--accent) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease !important;
+  }
+
+  &:hover {
+    animation: btnPulse 1.4s ease-out infinite;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-accent) !important;
+
+    &::before { opacity: 1; }
+  }
+
+  span { position: relative; z-index: 1; }
+}
+
+.btn-outline-primary {
+  border: 1.5px solid var(--accent) !important;
+  color: var(--accent) !important;
+  background: transparent !important;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--accent-subtle);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  &:hover {
+    color: var(--accent) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-accent) !important;
+
+    &::before { transform: scaleX(1); }
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   14. SECTION COMPÉTENCES/INTÉRÊTS
+   ══════════════════════════════════════════════════════════════ */
+
+.services ul li {
+  position: relative;
+  padding-left: 2px;
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    color     0.3s ease !important;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%) scaleX(0);
+    width: 3px;
+    height: 70%;
+    background: linear-gradient(180deg, var(--accent), var(--gold));
+    border-radius: 3px;
+    transform-origin: top;
+    transition: transform 0.3s ease !important;
+  }
+
+  &:hover {
+    transform: translateX(10px);
+    color: var(--gold) !important;
+
+    &::before { transform: translateY(-50%) scaleX(1); }
+
+    i {
+      color: var(--accent) !important;
+      filter: drop-shadow(0 0 6px var(--accent-glow));
+      transform: scale(1.2);
+    }
+  }
+
+  i {
+    transition: color 0.3s ease, filter 0.3s ease, transform 0.3s ease !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   15. SECTION TITLES — ANIMATION D'ENTRÉE
+   ══════════════════════════════════════════════════════════════ */
+
+.section-title h2.text_background {
+  background: linear-gradient(135deg, var(--text) 0%, var(--text-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   16. SOCIAL ICONS — HOVER MAGNÉTIQUE
+   ══════════════════════════════════════════════════════════════ */
+
+.social-icons li a {
+  transition:
+    background  0.3s ease,
+    color       0.3s ease,
+    transform   0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow  0.3s ease !important;
+
+  &:hover {
+    background: var(--accent) !important;
+    color: #fff !important;
+    transform: translateY(-4px) scale(1.1) !important;
+    box-shadow: 0 8px 20px var(--accent-glow) !important;
+    border-color: var(--accent) !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   17. RESUME LIST — HOVER ITEM
+   ══════════════════════════════════════════════════════════════ */
+
+.resume-list li {
+  transition: transform 0.3s ease, padding-left 0.3s ease !important;
+  border-radius: 4px;
+
+  &:hover {
+    transform: translateX(4px);
+    h4 { text-shadow: 0 0 12px var(--accent-glow); }
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   18. RETOUR EN HAUT — ANIMATION
+   ══════════════════════════════════════════════════════════════ */
+
+.toTop {
+  transition:
+    transform   0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow  0.3s ease,
+    background  0.3s ease !important;
+
+  &:hover {
+    transform: translateY(-4px) scale(1.1) !important;
+    box-shadow: 0 8px 20px var(--accent-glow) !important;
+    background: var(--accent) !important;
+    color: #fff !important;
+  }
+}

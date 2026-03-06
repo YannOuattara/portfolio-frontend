@@ -1,0 +1,137 @@
+<section class="contact" id="contact">
+  <div class="container d-flex flex-column justify-content-between h-100">
+    <div class="section-title flex-grow-1">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="text-center">
+            <h2 data-aos="heading-show" class="text_background">
+              Me Contacter
+              <span class="heading_background">Contact</span>
+            </h2>
+            <p class="m-0">N'hésitez pas à me contacter pour toute opportunité ou collaboration.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-content flex-grow-1">
+      <div class="row">
+        <!-- Email -->
+        <div class="col-sm-4">
+          <div class="d-flex flex-row flex-sm-column flex-md-row justify-content-md-center mb-3 text-left text-sm-center text-md-left">
+            <div class="contact-icon mr-md-3 mr-3 mr-sm-0">
+              <span class="mbri-letter"></span>
+            </div>
+            <div class="contact-details mt-2">
+              <h5>Email</h5>
+              <p>
+                <a [href]="'mailto:' + (profil?.email || 'yanncedricemmanuelo@gmail.com')">
+                  {{ profil?.email || 'yanncedricemmanuelo@gmail.com' }}
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Téléphone -->
+        <div class="col-sm-4">
+          <div class="d-flex flex-row flex-sm-column flex-md-row justify-content-md-center mb-3 text-left text-sm-center text-md-left">
+            <div class="contact-icon mr-md-3 mr-3 mr-sm-0">
+              <span class="mbri-mobile"></span>
+            </div>
+            <div class="contact-details mt-2">
+              <h5>Téléphone</h5>
+              <p>
+                <a [href]="'tel:' + (profil?.telephone || '+22507696474 02')">
+                  {{ profil?.telephone || '+225 07 69 64 74 02' }}
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Localisation -->
+        <div class="col-sm-4">
+          <div class="d-flex flex-row flex-sm-column flex-md-row justify-content-md-center mb-3 text-left text-sm-center text-md-left">
+            <div class="contact-icon mr-md-3 mr-3 mr-sm-0">
+              <span class="mbri-map-pin"></span>
+            </div>
+            <div class="contact-details mt-2">
+              <h5>Localisation</h5>
+              @if (profil?.locations?.length) {
+                <p>{{ profil!.locations[0].ville }}, {{ profil!.locations[0].pays }}</p>
+              } @else {
+                <p>Abidjan, Côte d'Ivoire</p>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulaire de contact -->
+      <div class="row mt-5">
+        <div class="col-lg-12">
+
+          @if (envoi() === 'success') {
+            <div class="alert alert-success text-center" role="alert">
+              Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.
+            </div>
+          }
+          @if (envoi() === 'error') {
+            <div class="alert alert-danger text-center" role="alert">
+              {{ erreurMsg() }}
+            </div>
+          }
+
+          <form [formGroup]="form" (ngSubmit)="soumettre()" id="contact-form">
+            <div class="row">
+              <div class="col-lg-6 mt-3">
+                <div class="form-group">
+                  <input type="text" formControlName="nom" class="form-control" autocomplete="off">
+                  <label>Nom complet</label>
+                  @if (form.get('nom')?.invalid && form.get('nom')?.touched) {
+                    <small class="text-danger">Veuillez saisir votre nom.</small>
+                  }
+                </div>
+              </div>
+              <div class="col-lg-6 mt-3">
+                <div class="form-group">
+                  <input type="email" formControlName="email" class="form-control" autocomplete="off">
+                  <label>Email</label>
+                  @if (form.get('email')?.invalid && form.get('email')?.touched) {
+                    <small class="text-danger">Veuillez saisir un email valide.</small>
+                  }
+                </div>
+              </div>
+              <div class="col-lg-12 mt-3">
+                <div class="form-group">
+                  <input type="text" formControlName="sujet" class="form-control" autocomplete="off">
+                  <label>Sujet</label>
+                  @if (form.get('sujet')?.invalid && form.get('sujet')?.touched) {
+                    <small class="text-danger">Veuillez saisir un sujet.</small>
+                  }
+                </div>
+              </div>
+              <div class="col-lg-12 mt-3">
+                <div class="form-group">
+                  <textarea formControlName="message" rows="6" class="form-control"></textarea>
+                  <label>Message</label>
+                  @if (form.get('message')?.invalid && form.get('message')?.touched) {
+                    <small class="text-danger">Le message doit contenir au moins 10 caractères.</small>
+                  }
+                </div>
+              </div>
+              <div class="col-lg-12 mt-3">
+                <div class="form-group mb-0 text-right">
+                  <button type="submit" id="contact-btn" class="btn btn-outline-primary btn-bg"
+                          [disabled]="envoi() === 'loading'">
+                    {{ envoi() === 'loading' ? 'Envoi en cours...' : 'Envoyer le message' }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
